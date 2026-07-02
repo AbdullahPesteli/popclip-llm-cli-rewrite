@@ -27,7 +27,7 @@ Extension:
 - Package: `LLM-CLI.popclipext`
 - Main config: `LLM-CLI.popclipext/Config.json`
 - Main script: `LLM-CLI.popclipext/rewrite.zsh`
-- Default provider: `ollama`
+- Default provider: `picker`
 - Default preset: `duzelt`
 
 Supported provider values:
