@@ -95,7 +95,7 @@ Recommended next local/power-user version:
 
 This is not a real PopClip submenu, but it is the closest practical workflow without cluttering the PopClip bar.
 
-This picker workflow is now available through provider value `picker`.
+This picker workflow is now available through provider value `picker`. It uses `picker-helper.swift` to show a small AppKit panel near `NSEvent.mouseLocation`. The helper is source-only and is compiled into `~/Library/Caches/PopClipLLMCLI/` on first use. If compilation fails, the script falls back to centered AppleScript `choose from list`.
 
 There is also a faster one-icon workflow using PopClip's `modifier flags` script variable:
 
