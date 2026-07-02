@@ -8,6 +8,7 @@ This extension lets you select text anywhere on macOS, click a PopClip action, a
 - Claude CLI
 - Gemini CLI
 - OpenCode CLI
+- Ollama
 
 It is useful when you already pay for or are logged into a CLI tool and do not want to manage separate API keys inside PopClip.
 
@@ -15,6 +16,8 @@ It is useful when you already pay for or are logged into a CLI tool and do not w
 
 - Uses existing CLI login/session state.
 - No API key field in PopClip.
+- Can use local Ollama preset models when available.
+- Includes a native macOS picker mode for choosing provider/preset at runtime.
 - Supports multiple rewrite presets:
   - `Düzelt`: minimal Turkish spelling/punctuation correction.
   - `Chat Kurumsal`: clearer WhatsApp/Telegram work-message tone.
@@ -46,13 +49,30 @@ Common paths are already included:
 - `/usr/local/bin`
 - system paths
 
+### Ollama
+
+Default provider is Ollama because it works locally and gives immediate feedback when the expected local models exist.
+
+Default local model mapping:
+
+- `Düzelt` -> `turkce-duzelt`
+- `Chat Kurumsal` -> `turkce-chat-kurumsal`
+- `Mail Kurumsal` -> `turkce-mail-kurumsal`
+- `Müşteri Tonu` -> `turkce-mail-musteri-tonu`
+
+Set the Model field to override this mapping.
+
+### Picker
+
+Choose `Picker` as the provider to show a native macOS list each time the action runs. This is a workaround for PopClip's lack of extension-controlled submenus.
+
 ### Codex CLI
 
 ```sh
 codex login
 ```
 
-Default provider in this extension is Codex because it works well for short non-interactive rewrite tasks.
+Codex works well for short non-interactive rewrite tasks. Choose it in the provider setting when you want a stronger cloud model.
 
 ### Claude CLI
 

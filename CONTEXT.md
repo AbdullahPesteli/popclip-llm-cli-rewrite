@@ -11,7 +11,7 @@ Primary use case:
 - Select messy Turkish text anywhere on macOS.
 - Run a PopClip action.
 - Replace the selected text with a cleaner rewrite.
-- Choose between providers such as Codex, Claude, Gemini, and OpenCode when needed.
+- Choose between providers such as Ollama, Codex, Claude, Gemini, and OpenCode when needed.
 
 ## Current State
 
@@ -27,11 +27,13 @@ Extension:
 - Package: `LLM-CLI.popclipext`
 - Main config: `LLM-CLI.popclipext/Config.json`
 - Main script: `LLM-CLI.popclipext/rewrite.zsh`
-- Default provider: `codex`
+- Default provider: `ollama`
 - Default preset: `duzelt`
 
 Supported provider values:
 
+- `ollama`
+- `picker`
 - `codex`
 - `claude`
 - `gemini`
@@ -93,10 +95,13 @@ Recommended next local/power-user version:
 
 This is not a real PopClip submenu, but it is the closest practical workflow without cluttering the PopClip bar.
 
+This picker workflow is now available through provider value `picker`.
+
 ## Known Provider Findings
 
 Local tests on the original development machine:
 
+- Ollama local preset models worked and are the safest default for immediate feedback.
 - Codex CLI worked and was the best practical provider for short rewrite tasks.
 - OpenCode CLI worked but was slower and sometimes changed numeric punctuation, such as `2.04-2.27` to `2:04-2:27`. The prompt now explicitly asks providers to preserve numeric range/timecode punctuation.
 - Gemini CLI was installed but failed with an account/client eligibility error at the time of testing.

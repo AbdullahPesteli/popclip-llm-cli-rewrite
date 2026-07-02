@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-: "${POPCLIP_OPTION_PROVIDER:=codex}"
+: "${POPCLIP_OPTION_PROVIDER:=ollama}"
 : "${POPCLIP_OPTION_PRESET:=duzelt}"
 : "${POPCLIP_OPTION_MODEL:=}"
 : "${POPCLIP_OPTION_CUSTOMPROMPT:=}"
