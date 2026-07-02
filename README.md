@@ -1,0 +1,117 @@
+# PopClip LLM CLI Rewrite
+
+Use a logged-in LLM command-line tool from PopClip to rewrite selected text.
+
+This extension lets you select text anywhere on macOS, click a PopClip action, and send the selection to one of these CLIs:
+
+- Codex CLI
+- Claude CLI
+- Gemini CLI
+- OpenCode CLI
+
+It is useful when you already pay for or are logged into a CLI tool and do not want to manage separate API keys inside PopClip.
+
+## Features
+
+- Uses existing CLI login/session state.
+- No API key field in PopClip.
+- Supports multiple rewrite presets:
+  - `Düzelt`: minimal Turkish spelling/punctuation correction.
+  - `Chat Kurumsal`: clearer WhatsApp/Telegram work-message tone.
+  - `Mail Kurumsal`: professional client-facing email tone.
+  - `Müşteri Tonu`: warmer corporate client communication.
+  - `Custom`: your own prompt from PopClip settings.
+- Replaces the selected text with the model output.
+- Supports optional model override per provider.
+
+## Installation
+
+1. Install and log in to at least one supported CLI.
+2. Download or clone this repository.
+3. Double-click `LLM-CLI.popclipext`.
+4. Enable the extension in PopClip.
+5. Open the extension settings and choose your provider.
+
+If macOS/PopClip warns that the extension is unsigned, inspect the source first. The extension is a plain shell script plus a JSON config.
+
+## Provider Setup
+
+The extension expects the CLI to be available on `PATH`.
+
+Common paths are already included:
+
+- `~/.npm-global/bin`
+- `~/.local/bin`
+- `/opt/homebrew/bin`
+- `/usr/local/bin`
+- system paths
+
+### Codex CLI
+
+```sh
+codex login
+```
+
+Default provider in this extension is Codex because it works well for short non-interactive rewrite tasks.
+
+### Claude CLI
+
+```sh
+claude
+/login
+```
+
+Then choose `Claude CLI` in PopClip settings.
+
+### Gemini CLI
+
+```sh
+gemini
+```
+
+Then complete the provider's login flow. Some Gemini CLI account tiers may not support the current CLI client.
+
+### OpenCode CLI
+
+```sh
+opencode providers
+```
+
+Configure a provider, then choose `OpenCode CLI` in PopClip settings.
+
+## Usage
+
+1. Select text.
+2. Click the `LLM CLI` PopClip action.
+3. The selected text is replaced with the rewritten text.
+
+Holding Shift with PopClip's `paste-result` behavior usually copies instead of pasting, depending on PopClip settings/version.
+
+## Notes
+
+- This extension sends selected text to whichever third-party CLI/provider you choose.
+- Do not use it on sensitive text unless you trust that provider and its account/data settings.
+- CLIs can be slower than a local Ollama model. In testing, Codex was usable for short text, while OpenCode was slower.
+- The output quality depends heavily on the provider, model, and prompt.
+- Reasoning models are not automatically better for this workflow. For PopClip, the best model is usually the one that follows instructions and returns only clean final text.
+
+## Development
+
+Test the script from Terminal:
+
+```sh
+env POPCLIP_OPTION_PROVIDER=codex POPCLIP_OPTION_PRESET=duzelt POPCLIP_OPTION_MODEL='' \
+  ./LLM-CLI.popclipext/rewrite.zsh <<'EOF'
+bu metni düzgün hale getirirmisin ama anlamı bozma
+EOF
+```
+
+Create a distributable zip:
+
+```sh
+zip -r dist/LLM-CLI.popclipext.zip LLM-CLI.popclipext
+```
+
+## License
+
+MIT
