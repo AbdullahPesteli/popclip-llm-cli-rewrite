@@ -97,6 +97,9 @@ Holding Shift with PopClip's `paste-result` behavior usually copies instead of p
 
 ## Development
 
+See [CONTEXT.md](CONTEXT.md) for project background, PopClip API constraints,
+known provider behavior, test cases, and suggested next improvements.
+
 Test the script from Terminal:
 
 ```sh
