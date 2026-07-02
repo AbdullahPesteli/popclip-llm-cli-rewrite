@@ -97,6 +97,17 @@ This is not a real PopClip submenu, but it is the closest practical workflow wit
 
 This picker workflow is now available through provider value `picker`.
 
+There is also a faster one-icon workflow using PopClip's `modifier flags` script variable:
+
+- No modifier: configured provider/preset.
+- Option: Ollama / Chat.
+- Shift: Ollama / Mail.
+- Control: Ollama / Müşteri Tonu.
+- Command: Codex / Düzelt.
+- Command + Option: Codex / Chat.
+- Command + Shift: Codex / Mail.
+- Command + Control: Picker.
+
 ## Known Provider Findings
 
 Local tests on the original development machine:
