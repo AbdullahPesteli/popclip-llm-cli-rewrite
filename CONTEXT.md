@@ -108,6 +108,8 @@ There is also a faster one-icon workflow using PopClip's `modifier flags` script
 - Command + Shift: Codex / Mail.
 - Command + Control: Picker.
 
+The extension also exposes `Help` in the provider dropdown and `Shortcut Help` inside Picker. These show a small macOS dialog with the shortcut list, then exit without rewriting text.
+
 ## Known Provider Findings
 
 Local tests on the original development machine:
